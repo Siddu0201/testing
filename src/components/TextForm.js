@@ -41,13 +41,13 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control" placeholder='Enter Text here' onChange={handleOnChange} id="myBox" rows="8" value={text}></textarea>
                 </div>
-                <button className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary" onClick={handleCopyClick}>Copy Text</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+                <button disabled={text.length===0} className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
+                <button disabled={text.length===0} className="btn btn-primary" onClick={handleCopyClick}>Copy Text</button>
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
-                <p>{text.split(" ").filter((elm)=> {return elm.length!==0;}).length} words and {text.length} characters</p>
+                <p>{text.split(/\s+/).filter((elm)=> {return elm.length!==0;}).length} words and {text.length} characters</p>
                 <p>{0.008 * text.split(" ").length} Minute read</p>
                 <h2>Preview</h2>
                 <p>{text.length>0?text:'Enter something in textbox to preview'}</p>
